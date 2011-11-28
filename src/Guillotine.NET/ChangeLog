@@ -1,0 +1,8 @@
+2011-11-27  M. David Peterson  <m.david@3rdandurban.com>
+
+	* AssemblyInfo.cs: Injection of initial static extension
+	  functions and terminal-based test.
+
+	* Main.cs:
+	* UrlShortener.cs: 
+
