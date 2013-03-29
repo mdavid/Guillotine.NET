@@ -2,7 +2,7 @@
 // UrlShortener.cs
 //  
 // Author:
-//       M. David Peterson <${AuthorEmail}>
+//       M. David Peterson <m.david@3rdandurban.com>
 // 
 // Copyright (c) 2011 M. David Peterson
 // 
@@ -32,8 +32,8 @@ namespace Nuxleus.Web.Utility
 {
 	public static class UrlShortener
 	{
-		static Encoding m_encoding = new UTF8Encoding ();
-		static HashAlgorithm m_algorithm = MD5.Create ();
+		static Encoding mEncoding = new UTF8Encoding ();
+		static HashAlgorithm mAlgorithm = MD5.Create ();
 
 		static UrlShortener ()
 		{
@@ -63,23 +63,23 @@ namespace Nuxleus.Web.Utility
 		/// </param>
 		public static string Shorten (this string url)
 		{
-			return url.IsValidUrlString() ? url.CleanUrlString().GetMD5Hash().ToBase16Integer().ToBigEndianByteOrder().GetBytes().GetBase64UrlSafeEncoding() : "URL is Invalid.";
+			return url.IsValidUrlString () ? url.CleanUrlString ().GetMD5Hash ().ToBase16Integer ().ToBigEndianByteOrder ().GetBytes ().GetBase64UrlSafeEncoding () : "URL is Invalid.";
 					
 		}
 
 		public static bool IsValidUrlString (this string url)
 		{
-			return Regex.IsMatch(url, @"((https?|rtmp|magnet):((//)|(\\\\)|(\?))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)");
+			return Regex.IsMatch (url, @"((https?|rtmp|magnet):((//)|(\\\\)|(\?))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)");
 		}
 		
 		public static string CleanUrlString (this string url)
 		{
-			return Regex.Replace(Regex.Replace(url, @"/\s/", String.Empty), @"/(\#|\?).*/", String.Empty);
+			return Regex.Replace (Regex.Replace (url, @"/\s/", String.Empty), @"/(\#|\?).*/", String.Empty);
 		}
 
 		public static byte[] GetMD5Hash (this string str)
 		{
-			return m_algorithm.ComputeHash (m_encoding.GetBytes (str));
+			return mAlgorithm.ComputeHash (mEncoding.GetBytes (str));
 		}
 		
 		public static int ToBase16Integer (this byte[] byteArray)
@@ -93,7 +93,7 @@ namespace Nuxleus.Web.Utility
 			foreach (var element in byteArray) {
 				sb.Append (element.ToString ("X2"));
 			}
-			return sb.ToString();
+			return sb.ToString ();
 		}
 
 		public static string GetBase64UrlSafeEncoding (this byte[] byteArray)
@@ -111,7 +111,7 @@ namespace Nuxleus.Web.Utility
 
 		public static byte[] GetBytes (this string intString)
 		{
-			return m_encoding.GetBytes (intString);
+			return mEncoding.GetBytes (intString);
 		}
 
 		public static byte[] GetBytes (this int integer)
@@ -127,7 +127,7 @@ namespace Nuxleus.Web.Utility
 		public static int ToBigEndianByteOrder (this int v)
 		{
 			return (int)(((ToBigEndianByteOrder ((short)v) & 0xffff) << 0x10) |
-                          (ToBigEndianByteOrder ((short)(v >> 0x10)) & 0xffff));
+				(ToBigEndianByteOrder ((short)(v >> 0x10)) & 0xffff));
 		}
 	}
 }

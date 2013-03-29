@@ -12,6 +12,4 @@ missing
 expansions.m4
 aclocal.m4
 Makefile.include
-install-sh
-missing
 
