@@ -6,27 +6,27 @@ EXTRA_DIST =
 if ENABLE_DEBUG_X86
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG;"
-ASSEMBLY = bin/Debug/urlshortenertest.exe
+ASSEMBLY = bin/Debug/Guillotine.NET.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Debug
 
-URLSHORTENERTEST_EXE_MDB_SOURCE=bin/Debug/urlshortenertest.exe.mdb
-URLSHORTENERTEST_EXE_MDB=$(BUILD_DIR)/urlshortenertest.exe.mdb
+GUILLOTINE_NET_EXE_MDB_SOURCE=bin/Debug/Guillotine.NET.exe.mdb
+GUILLOTINE_NET_EXE_MDB=$(BUILD_DIR)/Guillotine.NET.exe.mdb
 
 endif
 
 if ENABLE_RELEASE_X86
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize-
-ASSEMBLY = bin/Release/urlshortenertest.exe
+ASSEMBLY = bin/Release/Guillotine.NET.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES = 
 BUILD_DIR = bin/Release
 
-URLSHORTENERTEST_EXE_MDB=
+GUILLOTINE_NET_EXE_MDB=
 
 endif
 
@@ -34,7 +34,7 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(URLSHORTENERTEST_EXE_MDB)  
+	$(GUILLOTINE_NET_EXE_MDB)  
 
 BINARIES = \
 	$(GUILLOTINE_NET)  

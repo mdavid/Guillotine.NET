@@ -126,8 +126,7 @@ namespace Nuxleus.Web.Utility
 
 		public static int ToBigEndianByteOrder (this int v)
 		{
-			return (int)(((ToBigEndianByteOrder ((short)v) & 0xffff) << 0x10) |
-				(ToBigEndianByteOrder ((short)(v >> 0x10)) & 0xffff));
+			return (((ToBigEndianByteOrder ((short)v) & 0xffff) << 0x10) | (ToBigEndianByteOrder ((short)(v >> 0x10)) & 0xffff));
 		}
 	}
 }
