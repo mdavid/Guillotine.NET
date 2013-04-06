@@ -52,7 +52,7 @@
           <VersionControlPolicy inheritsSet="Mono" />
           <ChangeLogPolicy inheritsSet="Mono" />
         </Policies>
-        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="True" RelativeMakefileName="Makefile.am" SyncReferences="True" IsAutotoolsProject="True" RelativeConfigureInPath="..">
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile.am" SyncReferences="True" IsAutotoolsProject="True" RelativeConfigureInPath="..">
           <BuildFilesVar Sync="True" Name="FILES" />
           <DeployFilesVar />
           <ResourcesVar Sync="True" Name="RESOURCES" />
