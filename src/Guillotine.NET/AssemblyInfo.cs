@@ -2,9 +2,9 @@
 // AssemblyInfo.cs
 //  
 // Author:
-//       M. David Peterson <${AuthorEmail}>
+//       M. David Peterson <m.david@3rdandurban.com>
 // 
-// Copyright (c) 2011 M. David Peterson
+// Copyright (c) 2011-2013 M. David Peterson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
