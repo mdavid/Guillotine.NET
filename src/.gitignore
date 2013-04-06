@@ -6,12 +6,8 @@ bin/
 obj/
 *.userprefs
 autom4te.cache/
-configure
 install-sh
 missing
 expansions.m4
 aclocal.m4
-Makefile.include
-install-sh
-missing
 

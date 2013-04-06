@@ -30,11 +30,11 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Guillotine.NET")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Port of the guillotine URL shortener project. <see cref='https://github.com/technoweenie/guillotine'/>")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("3rd&Urban")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("(c) 2011 M. David Peterson")]
+[assembly: AssemblyCopyright("(c) 2013 M. David Peterson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
