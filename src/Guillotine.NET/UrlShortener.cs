@@ -28,6 +28,7 @@ using System;
 using System.Text;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Numerics;
 
 namespace Nuxleus.Web.Utility
 {
@@ -64,7 +65,7 @@ namespace Nuxleus.Web.Utility
 		/// </param>
 		public static string Shorten (this string url)
 		{
-			return url.IsValidUrlString () ? url.CleanUrlString ().GetMD5Hash ().ToBase16Integer ().ToBigEndianByteOrder ().GetBytes ().GetBase64UrlSafeEncoding () : "URL is Invalid.";
+            return url.IsValidUrlString() ? url.CleanUrlString().GetMD5Hash().ToBigInteger().ToBigEndianByteOrder().ToByteArray().GetBase64UrlSafeEncoding () : "URL is Invalid.";
 					
 		}
 
@@ -75,7 +76,7 @@ namespace Nuxleus.Web.Utility
 		/// <param name="url">URL string.</param>
 		public static bool IsValidUrlString (this string url)
 		{
-			return Regex.IsMatch (url, @"((https?|rtmp|magnet):((//)|(\\\\)|(\?))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)");
+			return Regex.IsMatch (url, @"((https?|rtmp|magnet|git):((//)|(\\\\)|(\?))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)");
 		}
 
 		/// <summary>
@@ -103,9 +104,9 @@ namespace Nuxleus.Web.Utility
 		/// </summary>
 		/// <returns>The base16 integer for the given byte array.</returns>
 		/// <param name="byteArray">The byte array in which to perform the conversion.</param>
-		public static int ToBase16Integer (this byte[] byteArray)
+		public static BigInteger ToBigInteger (this byte[] byteArray)
 		{
-			return Convert.ToInt32 (GetStringValue (byteArray), 16);
+            return new BigInteger(byteArray);
 		}
 
 		/// <summary>
@@ -181,10 +182,17 @@ namespace Nuxleus.Web.Utility
 		/// </summary>
 		/// <returns>The int converted to big endian byte order.</returns>
 		/// <param name="integer">The int in which to convert to Big Endian byte order</param>
-		public static int ToBigEndianByteOrder (this int integer)
+		public static BigInteger ToBigEndianByteOrder (this BigInteger integer)
 		{
-			return (((ToBigEndianByteOrder ((short)integer) & 0xffff) << 0x10) | (ToBigEndianByteOrder ((short)(integer >> 0x10)) & 0xffff));
-		}
+            if (BitConverter.IsLittleEndian) {
+                byte[] temp = integer.ToByteArray();
+                Array.Reverse(temp);
+                return BitConverter.ToInt32(temp, 0);
+            }
+            else return integer;
+
+            //return (((ToBigEndianByteOrder ((short)integer) & 0xffff) << 0x10) | (ToBigEndianByteOrder ((short)(integer >> 0x10)) & 0xffff));
+        }
 	}
 }
 
