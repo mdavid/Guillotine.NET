@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Numerics;
 
 namespace Nuxleus.Web.Utility
 {
@@ -45,14 +46,14 @@ namespace Nuxleus.Web.Utility
 			
 			byte[] md5Hash = cleanUrl.GetMD5Hash ();
 			Console.WriteLine ("MD5 Hex Digest: {0}", md5Hash.GetStringValue ());
-			
-			int base16Int = md5Hash.ToBase16Integer ();
+
+            BigInteger base16Int = md5Hash.ToBigInteger ();
 			Console.WriteLine ("Base 16 Integer: {0}", base16Int);
-			
-			int bigEndianInt = base16Int.ToBigEndianByteOrder ();
+
+            BigInteger bigEndianInt = base16Int.ToBigEndianByteOrder ();
 			Console.WriteLine ("BigEndian from Integer: {0}", bigEndianInt);
 
-			string urlSafeStringFromBytes = bigEndianInt.GetBytes ().GetBase64UrlSafeEncoding (); 
+			string urlSafeStringFromBytes = bigEndianInt.ToByteArray().GetBase64UrlSafeEncoding (); 
 			Console.WriteLine ("String from Byte Array: {0}", urlSafeStringFromBytes);
 
 			string shortUrl = String.Format ("{0}{1}", baseDomain, urlSafeStringFromBytes);
